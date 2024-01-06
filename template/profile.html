@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p>Welcome, {{ user.username }}!</p>
+    <p>Your habits:</p>
+    <ul>
+        {% for habit in user.habits %}
+            <li>{{ habit.name }} - {{ habit.date.strftime('%Y-%m-%d %H:%M:%S') }} 
+                <a href="{{ url_for('delete_habit', id=habit.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Habit Tracker</title>
+</head>
+<body>
+    <h1>User Habit Tracker</h1>
+    <form action="/add" method="post">
+        <label for="habit">Add Habit:</label>
+        <input type="text" name="habit" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for habit in habits %}
+            <li>{{ habit.name }} - {{ habit.date.strftime('%Y-%m-%d %H:%M:%S') }} 
+                <a href="{{ url_for('delete_habit', id=habit.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
